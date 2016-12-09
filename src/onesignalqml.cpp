@@ -50,7 +50,69 @@ void OneSignalQml::registerForPushNotifications()
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::registerForPushNotifications();
 #else
-    // TODO
     qDebug() << "TODO: OneSignalQml::registerForPushNotifications()";
+#endif
+}
+
+void OneSignalQml::getTags()
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::getTags();
+#else
+    qDebug() << "TODO: OneSignalQml::getTags()";
+#endif
+}
+
+void OneSignalQml::sendTag(QString key, QString value)
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::sendTag(key, value);
+#else
+    qDebug() << "TODO: OneSignalQml::sendTag(QString key, QString value)";
+#endif
+}
+
+void OneSignalQml::sendTags(QVariantMap tags)
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::sendTags(tags);
+#else
+    qDebug() << "TODO: OneSignalQml::sendTags(QVariantMap tags)";
+#endif
+}
+
+void OneSignalQml::deleteTag(QString key)
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::deleteTag(key);
+#else
+    qDebug() << "TODO: OneSignalQml::deleteTag(QString key)";
+#endif
+}
+
+void OneSignalQml::deleteTags(QVariantList tags)
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::deleteTags(tags);
+#else
+    qDebug() << "TODO: OneSignalQml::deleteTags(QVariantList tags)";
+#endif
+}
+
+void OneSignalQml::promptLocation()
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::promptLocation();
+#else
+    qDebug() << "TODO: OneSignalQml::promptLocation()";
+#endif
+}
+
+void OneSignalQml::syncHashedEmail(QString email)
+{
+#if defined(Q_OS_IOS)
+    OneSignalQmliOS::syncHashedEmail(email);
+#else
+    qDebug() << "TODO: OneSignalQml::syncHashedEmail(QString email)";
 #endif
 }

@@ -8,11 +8,13 @@ SOURCES += \
     $$PWD/src/onesignalqml.cpp
 
 ios {
+    HEADERS += \
+        $$PWD/src/ios/onesignalqmlios.h
 
-	HEADERS += \
-	    $$PWD/src/ios/onesignalqmlios.h
+    OBJECTIVE_HEADERS += \
+        $$PWD/src/ios/shavhelpermanager.h
 
-	OBJECTIVE_SOURCES += \
-	    $$PWD/src/ios/onesignalqmlios.mm
-
+    OBJECTIVE_SOURCES += \
+        $$PWD/src/ios/shavhelpermanager.mm \
+        $$PWD/src/ios/onesignalqmlios.mm
 }
