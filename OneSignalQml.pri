@@ -18,3 +18,16 @@ ios {
         $$PWD/src/ios/shavhelpermanager.mm \
         $$PWD/src/ios/onesignalqmlios.mm
 }
+
+android {
+    QT += androidextras
+
+    HEADERS += \
+        $$PWD/src/android/onesignalqmlandroid.h
+
+    SOURCES += \
+        $$PWD/src/android/onesignalqmlandroid.cpp
+
+    OTHER_FILES += \
+        $$PWD/src/android/com/lukevear/onesignalqml/OneSignalQmlNotificationHandler.java
+}

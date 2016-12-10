@@ -2,6 +2,8 @@
 
 #if defined(Q_OS_IOS)
 #include "ios/onesignalqmlios.h"
+#elif defined(Q_OS_ANDROID)
+#include "android/onesignalqmlandroid.h"
 #endif
 
 static OneSignalQml *_instance = 0;
@@ -43,14 +45,17 @@ void OneSignalQml::init(QString appId, void *launchOptions, InFocusNotificationD
 {
     OneSignalQmliOS::init(appId, launchOptions, displayOption);
 }
+#elif defined (Q_OS_ANDROID)
+void OneSignalQml::init(InFocusNotificationDisplay displayOption)
+{
+    OneSignalQmlAndroid::init(displayOption);
+}
 #endif
 
 void OneSignalQml::registerForPushNotifications()
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::registerForPushNotifications();
-#else
-    qDebug() << "TODO: OneSignalQml::registerForPushNotifications()";
 #endif
 }
 
@@ -58,8 +63,10 @@ void OneSignalQml::getTags()
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::getTags();
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::getTags();
 #else
-    qDebug() << "TODO: OneSignalQml::getTags()";
+    emit tagsRetrieved(QVariantMap());
 #endif
 }
 
@@ -67,8 +74,11 @@ void OneSignalQml::sendTag(QString key, QString value)
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::sendTag(key, value);
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::sendTag(key, value);
 #else
-    qDebug() << "TODO: OneSignalQml::sendTag(QString key, QString value)";
+    Q_UNUSED(key);
+    Q_UNUSED(value);
 #endif
 }
 
@@ -76,8 +86,10 @@ void OneSignalQml::sendTags(QVariantMap tags)
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::sendTags(tags);
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::sendTags(tags);
 #else
-    qDebug() << "TODO: OneSignalQml::sendTags(QVariantMap tags)";
+    Q_UNUSED(tags);
 #endif
 }
 
@@ -85,8 +97,10 @@ void OneSignalQml::deleteTag(QString key)
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::deleteTag(key);
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::deleteTag(key);
 #else
-    qDebug() << "TODO: OneSignalQml::deleteTag(QString key)";
+    Q_UNUSED(key);
 #endif
 }
 
@@ -94,8 +108,10 @@ void OneSignalQml::deleteTags(QVariantList tags)
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::deleteTags(tags);
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::deleteTags(tags);
 #else
-    qDebug() << "TODO: OneSignalQml::deleteTags(QVariantList tags)";
+    Q_UNUSED(tags);
 #endif
 }
 
@@ -103,8 +119,6 @@ void OneSignalQml::promptLocation()
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::promptLocation();
-#else
-    qDebug() << "TODO: OneSignalQml::promptLocation()";
 #endif
 }
 
@@ -112,7 +126,9 @@ void OneSignalQml::syncHashedEmail(QString email)
 {
 #if defined(Q_OS_IOS)
     OneSignalQmliOS::syncHashedEmail(email);
+#elif defined(Q_OS_ANDROID)
+    OneSignalQmlAndroid::syncHashedEmail(email);
 #else
-    qDebug() << "TODO: OneSignalQml::syncHashedEmail(QString email)";
+    Q_UNUSED(email);
 #endif
 }

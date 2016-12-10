@@ -27,6 +27,8 @@ public:
 
 #if defined(Q_OS_IOS)
     static void init(QString appId, void *launchOptions, InFocusNotificationDisplay displayOption);
+#elif defined(Q_OS_ANDROID)
+    static void init(InFocusNotificationDisplay displayOption);
 #endif
 
     // Registering Push
