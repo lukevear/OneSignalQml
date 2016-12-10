@@ -4,8 +4,6 @@
 #import <OneSignal/OneSignal.h>
 #import <UIKit/UIKit.h>
 
-#include <QDebug>
-
 void OneSignalQmliOS::init(QString appId, void *launchOptions, OneSignalQml::InFocusNotificationDisplay displayOption)
 {
     // Bind to when ids are available

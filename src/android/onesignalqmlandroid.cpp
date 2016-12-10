@@ -5,8 +5,6 @@
 #include <QJsonObject>
 #include <QJsonArray>
 
-#include <QDebug>
-
 static QAndroidJniObject OneSignalQmlNotificationHandler = 0;
 
 void OneSignalQmlAndroid::init(OneSignalQml::InFocusNotificationDisplay displayOption)
