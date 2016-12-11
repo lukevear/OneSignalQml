@@ -151,7 +151,7 @@ QVariantMap OneSignalQmliOS::notificationPayloadToVariantMap(void *payload)
     result["launchURL"]        = QString::fromNSString(_payload.launchURL);
     result["additionalData"]   = [ShavHelperManager NSDictionaryToVariantMap:_payload.additionalData];
     result["attachments"]      = [ShavHelperManager NSDictionaryToVariantMap:_payload.attachments];
-    result["actionButtons"]    = [ShavHelperManager NSDictionaryToVariantMap:_payload.actionButtons];
+    result["actionButtons"]    = [ShavHelperManager NSArrayToVariantList:_payload.actionButtons];
     result["rawPayload"]       = [ShavHelperManager NSDictionaryToVariantMap:_payload.rawPayload];
 
     // We have a payload
