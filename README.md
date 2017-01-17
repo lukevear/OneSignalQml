@@ -68,3 +68,38 @@ int main(int argc, char *argv[])
     // Perform other work, such as loading your main QML file
 }
 ```
+
+## OneSignal Initialisation
+As per the official OneSignal documentation, once you've install OneSignal you need to call the `init` function on the SDK to bootstrap the service.
+
+We expose this `init` method through convient wrapper that handles all the configuration from a single line:
+
+#### iOS
+In the `didFinishLaunchingWithOptions` method in a custom `appdelegate.mm`, insert the following:
+
+```
+#include "onesignalqml.h"
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    // Initiate OneSignal
+    OneSignalQml::init("<your-onesignal-project-id>", launchOptions, OneSignalQml::InFocusNotificationDisplay::None);
+
+    return YES;
+}
+```
+
+To help you determine which `InFocusNotificationDisplay` option is right for you, see the [official documentation](https://documentation.onesignal.com/docs/ios-native-sdk#section--kossettingskeyinfocusdisplayoption-).
+
+Note: If you don't have a custom application delegate, look in *tests/bundles/ios* (and corresponding line in the `.pro` file) for an example.
+
+#### Android
+In the `main` method of your `main.cpp`, insert the following line under `OneSignalQml::registerQmlContext();`:
+
+```
+#if defined(Q_OS_ANDROID)
+    OneSignalQml::init(OneSignalQml::InFocusNotificationDisplay::None);
+#endif
+```
+
+To help you determine which `InFocusNotificationDisplay` option is right for you, see the [official documentation](https://documentation.onesignal.com/docs/android-native-sdk#section--infocusdisplaying-).
