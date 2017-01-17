@@ -117,8 +117,17 @@ import OneSignal 1.0
 ### Method Reference
 The below table provides a reference for each method available in OneSignalQml, and the corresponding OneSignal iOS/Android SDK method that is called.
 
-| OneSignalQml Method | Corresponding iOS SDK Method |  CorrespondingAndroid SDK Method |
-|---------------------|------------------------------|----------------------------------|
-|                     |                              |                                  |
-|                     |                              |                                  |
-|                     |                              |                                  |
+##### registerForPushNotifications()
+
+Use this method to request push notification permissions from the user.
+
+***Example***
+```
+Component.onCompleted: {
+    OneSignal.registerForPushNotifications();
+}
+```
+
+Corresponding iOS SDK implementation: [here](https://documentation.onesignal.com/docs/ios-native-sdk#section--registerforpushnotifications-)
+
+Correspnding Android SDK implementation: N/A
