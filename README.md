@@ -53,3 +53,18 @@ Finally, you need to toggle the "Push Notifications" capability in Xcode (open t
 
 #### Android Specific Steps
 There are none!
+
+### Step Four: QML Context
+Now that you have added OneSignal to your project, the last step to complete installation is to register the QML context for OneSignalQml. To do this, add the following to `main.cpp` (ensure you place it before you load your main `.qml` file):
+
+```
+#include "onesignalqml.h"
+
+int main(int argc, char *argv[])
+{
+    // Register OneSignalQml
+    OneSignalQml::registerQmlContext(); 
+    
+    // Perform other work, such as loading your main QML file
+}
+```
