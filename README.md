@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
 ## OneSignal Initialisation
 As per the official OneSignal documentation, once you've install OneSignal you need to call the `init` function on the SDK to bootstrap the service.
 
-We expose this `init` method through convient wrapper that handles all the configuration from a single line:
+We expose this `init` method through convient wrapper that handles all the configuration from a single line. By default, we disable the automatic prompt to grant push notifications, so don't forget to call `OneSignal.registerForPushNotifications()` in your QML when appropiate.
 
 #### iOS
 In the `didFinishLaunchingWithOptions` method in a custom `appdelegate.mm`, insert the following:
@@ -103,3 +103,22 @@ In the `main` method of your `main.cpp`, insert the following line under `OneSig
 ```
 
 To help you determine which `InFocusNotificationDisplay` option is right for you, see the [official documentation](https://documentation.onesignal.com/docs/android-native-sdk#section--infocusdisplaying-).
+
+## Using OneSignalQml
+Now that everything is set up - you can use OneSignal!
+
+### Qml Import Statement
+To use OneSignalQml in your own QML files, simply use the following import statement:
+
+```
+import OneSignal 1.0
+```
+
+### Method Reference
+The below table provides a reference for each method available in OneSignalQml, and the corresponding OneSignal iOS/Android SDK method that is called.
+
+| OneSignalQml Method | Corresponding iOS SDK Method |  CorrespondingAndroid SDK Method |
+|---------------------|------------------------------|----------------------------------|
+|                     |                              |                                  |
+|                     |                              |                                  |
+|                     |                              |                                  |
