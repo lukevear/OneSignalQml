@@ -25,7 +25,7 @@ include(lib/OneSignalQml/OneSignalQml.pri)
 ```
 
 #### iOS Specific Steps
-If developing for iOS, all you need to do is let clang know where `OneSignal.framework` is located:
+If developing for iOS, you'll need to let clang know where `OneSignal.framework` is located:
 
 ```
 ios {
@@ -35,6 +35,15 @@ ios {
     
     # Include the OneSignal SDK
     LIBS += -lz -framework OneSignal
+}
+```
+
+Once clang is able to find the framework, your then need to configure your `Info.plist` with the `remote-notification` background mode (a sample `Info.plist` is available in *tests/bundles/ios*). You then need to add the custom `Info.plist` to your `.pro` file so that when qmake generates an Xcode project it is automatically included:
+
+```
+ios {
+    # Add our custom Info.plist
+    QMAKE_INFO_PLIST = $$PWD/bundles/ios/Info.plist
 }
 ```
 
